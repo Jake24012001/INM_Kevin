@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using CEntidades.Gestion;
 namespace CDatos.Gestion
 {
-    class InmobilariaCD
+    public class InmobilariaCD
     {
         public static List<Inmobilaria> listarCategoria()
         {
@@ -28,7 +28,7 @@ namespace CDatos.Gestion
                 DB = null;
             }
         }
-        public static void InsertarCategoria(CEntidades.Gestion.Inmobilaria oc)
+        public static void InsertarInmobilaria(CEntidades.Gestion.Inmobilaria oc)
         {
 
             BDINMDataContext DB = null;
@@ -50,7 +50,7 @@ namespace CDatos.Gestion
                 DB = null;
             }
         }
-        public static void ModificarCategoria(CEntidades.Gestion.Inmobilaria oc)
+        public static void ModificarInmobilaria(CEntidades.Gestion.Inmobilaria oc)
         {
 
             BDINMDataContext DB = null;
@@ -72,7 +72,7 @@ namespace CDatos.Gestion
                 DB = null;
             }
         }
-        public static void EliminarCategoria(CEntidades.Gestion.Inmobilaria oc)
+        public static void EliminarInmobilaria(CEntidades.Gestion.Inmobilaria oc)
         {
 
             BDINMDataContext DB = null;
@@ -87,7 +87,7 @@ namespace CDatos.Gestion
             }
             catch (Exception ex)
             {
-                throw new Excepciones("Error al eliminar tabla categoria", ex);
+                throw new Excepciones("Error al eliminar tabla inmobilaria", ex);
             }
             finally
             {
