@@ -48,7 +48,7 @@ namespace CDatos
     #endregion
 		
 		public BDINMDataContext() : 
-				base(global::CDatos.Properties.Settings.Default.AgenciaInmoviliariaConnectionString, mappingSource)
+				base(global::CDatos.Properties.Settings.Default.AgenciaInmoviliariaConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -117,29 +117,43 @@ namespace CDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarInmobilaria")]
+		public int CP_EliminarInmobilaria([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idInmobilaria)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idInmobilaria);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ModificarVisitas")]
+		public int CP_ModificarVisitas([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idVisitas, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaV", DbType="Date")] System.Nullable<System.DateTime> fechaV, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="HoraV", DbType="Time")] System.Nullable<System.TimeSpan> horaV, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Comentario", DbType="VarChar(50)")] string comentario)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idVisitas, fechaV, horaV, idUsuario, comentario);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarPropietario")]
+		public int CP_EliminarPropietario([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idPropietario)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idPropietario);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarUsuarios")]
+		public int CP_EliminarUsuarios([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idUsuario);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarVisitas")]
+		public int CP_EliminarVisitas([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idVisitas)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idVisitas);
+			return ((int)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarInmobilaria")]
 		public int CP_InsertarInmobilaria([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idInmobilaria, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NOficinas", DbType="Int")] System.Nullable<int> nOficinas, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NReferencia", DbType="Int")] System.Nullable<int> nReferencia, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipo", DbType="VarChar(50)")] string tipo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Descripcion", DbType="VarChar(50)")] string descripcion, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idCiudad, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Precio", DbType="Money")] System.Nullable<decimal> precio, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idPropietario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idVisitas)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idInmobilaria, nOficinas, nReferencia, tipo, descripcion, idCiudad, precio, idPropietario, idVisitas);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarUsuarios")]
-		public int CP_InsertarUsuarios([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nombre", DbType="VarChar(50)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Apellido", DbType="VarChar(50)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaN", DbType="Date")] System.Nullable<System.DateTime> fechaN, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Ocupacion", DbType="VarChar(50)")] string ocupacion)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idUsuario, cedula, nombre, apellido, fechaN, ocupacion);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ModificarUsuarios")]
-		public int CP_ModificarUsuarios([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nombre", DbType="VarChar(50)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Apellido", DbType="VarChar(50)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaN", DbType="Date")] System.Nullable<System.DateTime> fechaN, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Ocupacion", DbType="VarChar(50)")] string ocupacion)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idUsuario, cedula, nombre, apellido, fechaN, ocupacion);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ModificarInmobilaria")]
-		public int CP_ModificarInmobilaria([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idInmobilaria, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NOficinas", DbType="Int")] System.Nullable<int> nOficinas, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NReferencia", DbType="Int")] System.Nullable<int> nReferencia, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipo", DbType="VarChar(50)")] string tipo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Descripcion", DbType="VarChar(50)")] string descripcion, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idCiudad, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Precio", DbType="Money")] System.Nullable<decimal> precio, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idPropietario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idVisitas)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idInmobilaria, nOficinas, nReferencia, tipo, descripcion, idCiudad, precio, idPropietario, idVisitas);
 			return ((int)(result.ReturnValue));
@@ -152,10 +166,17 @@ namespace CDatos
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ModificarPropietario")]
-		public int CP_ModificarPropietario([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idPropietario, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nombre", DbType="VarChar(50)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Apellido", DbType="VarChar(50)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Telefono", DbType="VarChar(10)")] string telefono, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="VarChar(50)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EstadoVivienda", DbType="VarChar(50)")] string estadoVivienda)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarUsuarios")]
+		public int CP_InsertarUsuarios([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nombre", DbType="VarChar(50)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Apellido", DbType="VarChar(50)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaN", DbType="Date")] System.Nullable<System.DateTime> fechaN, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Ocupacion", DbType="VarChar(50)")] string ocupacion)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idPropietario, cedula, nombre, apellido, telefono, email, estadoVivienda);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idUsuario, cedula, nombre, apellido, fechaN, ocupacion);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarVisitas")]
+		public int CP_InsertarVisitas([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idVisitas, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaV", DbType="Date")] System.Nullable<System.DateTime> fechaV, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="HoraV", DbType="Time")] System.Nullable<System.TimeSpan> horaV, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Comentario", DbType="VarChar(50)")] string comentario)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idVisitas, fechaV, horaV, idUsuario, comentario);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -164,13 +185,6 @@ namespace CDatos
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<CP_ListarCiudadResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarVisitas")]
-		public ISingleResult<CP_ListarVisitasResult> CP_ListarVisitas()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<CP_ListarVisitasResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarInmobilaria")]
@@ -194,45 +208,31 @@ namespace CDatos
 			return ((ISingleResult<CP_ListarUsuariosResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarInmobilaria")]
-		public int CP_EliminarInmobilaria([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idInmobilaria)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarVisitas")]
+		public ISingleResult<CP_ListarVisitasResult> CP_ListarVisitas()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idInmobilaria);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<CP_ListarVisitasResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ModificarInmobilaria")]
+		public int CP_ModificarInmobilaria([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idInmobilaria, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NOficinas", DbType="Int")] System.Nullable<int> nOficinas, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NReferencia", DbType="Int")] System.Nullable<int> nReferencia, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipo", DbType="VarChar(50)")] string tipo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Descripcion", DbType="VarChar(50)")] string descripcion, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idCiudad, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Precio", DbType="Money")] System.Nullable<decimal> precio, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idPropietario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idVisitas)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idInmobilaria, nOficinas, nReferencia, tipo, descripcion, idCiudad, precio, idPropietario, idVisitas);
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarVisitas")]
-		public int CP_EliminarVisitas([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idVisitas)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ModificarPropietario")]
+		public int CP_ModificarPropietario([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idPropietario, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nombre", DbType="VarChar(50)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Apellido", DbType="VarChar(50)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Telefono", DbType="VarChar(10)")] string telefono, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="VarChar(50)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EstadoVivienda", DbType="VarChar(50)")] string estadoVivienda)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idVisitas);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idPropietario, cedula, nombre, apellido, telefono, email, estadoVivienda);
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarPropietario")]
-		public int CP_EliminarPropietario([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idPropietario)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ModificarUsuarios")]
+		public int CP_ModificarUsuarios([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nombre", DbType="VarChar(50)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Apellido", DbType="VarChar(50)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaN", DbType="Date")] System.Nullable<System.DateTime> fechaN, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Ocupacion", DbType="VarChar(50)")] string ocupacion)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idPropietario);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarUsuarios")]
-		public int CP_EliminarUsuarios([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idUsuario);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarVisitas")]
-		public int CP_InsertarVisitas([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idVisitas, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaV", DbType="Date")] System.Nullable<System.DateTime> fechaV, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="HoraV", DbType="Date")] System.Nullable<System.DateTime> horaV, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Comentario", DbType="VarChar(50)")] string comentario)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idVisitas, fechaV, horaV, idUsuario, comentario);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ModificarVisitas")]
-		public int CP_ModificarVisitas([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idVisitas, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FechaV", DbType="Date")] System.Nullable<System.DateTime> fechaV, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="HoraV", DbType="Date")] System.Nullable<System.DateTime> horaV, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Comentario", DbType="VarChar(50)")] string comentario)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idVisitas, fechaV, horaV, idUsuario, comentario);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idUsuario, cedula, nombre, apellido, fechaN, ocupacion);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -385,7 +385,7 @@ namespace CDatos
 		
 		private System.DateTime _FechaV;
 		
-		private System.DateTime _HoraV;
+		private System.TimeSpan _HoraV;
 		
 		private int _idUsuario;
 		
@@ -403,7 +403,7 @@ namespace CDatos
     partial void OnidVisitasChanged();
     partial void OnFechaVChanging(System.DateTime value);
     partial void OnFechaVChanged();
-    partial void OnHoraVChanging(System.DateTime value);
+    partial void OnHoraVChanging(System.TimeSpan value);
     partial void OnHoraVChanged();
     partial void OnidUsuarioChanging(int value);
     partial void OnidUsuarioChanged();
@@ -458,8 +458,8 @@ namespace CDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoraV", DbType="Date NOT NULL")]
-		public System.DateTime HoraV
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoraV", DbType="Time NOT NULL")]
+		public System.TimeSpan HoraV
 		{
 			get
 			{
@@ -536,40 +536,40 @@ namespace CDatos
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuarios_Visitas", Storage="_Usuarios", ThisKey="idUsuario", OtherKey="idUsuario", IsForeignKey=true)]
-		public Usuarios Usuarios
-		{
-			get
-			{
-				return this._Usuarios.Entity;
-			}
-			set
-			{
-				Usuarios previousValue = this._Usuarios.Entity;
-				if (((previousValue != value) 
-							|| (this._Usuarios.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Usuarios.Entity = null;
-						previousValue.Visitas.Remove(this);
-					}
-					this._Usuarios.Entity = value;
-					if ((value != null))
-					{
-						value.Visitas.Add(this);
-						this._idUsuario = value.idUsuario;
-					}
-					else
-					{
-						this._idUsuario = default(int);
-					}
-					this.SendPropertyChanged("Usuarios");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
+        public Usuarios Usuarios
+        {
+            get
+            {
+                return this._Usuarios.Entity;
+            }
+            set
+            {
+                Usuarios previousValue = this._Usuarios.Entity;
+                if (previousValue != value || !this._Usuarios.HasLoadedOrAssignedValue)
+                {
+                    this.SendPropertyChanging();
+                    if (previousValue != null)
+                    {
+                        this._Usuarios.Entity = null;
+                        previousValue.Visitas.Remove(this);
+                    }
+                    this._Usuarios.Entity = value;
+                    if (value != null)
+                    {
+                        value.Visitas.Add(this);
+                        this._idUsuario = value.idUsuario;
+                    }
+                    else
+                    {
+                        this._idUsuario = default(int);
+                    }
+                    this.SendPropertyChanged(nameof(this.Usuarios));
+                }
+            }
+        }
+
+
+        public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
 		
@@ -987,7 +987,7 @@ namespace CDatos
 		
 		private int _idPropietario;
 		
-		private System.Data.Linq.Binary _Cedula;
+		private string _Cedula;
 		
 		private string _Nombre;
 		
@@ -1007,7 +1007,7 @@ namespace CDatos
     partial void OnCreated();
     partial void OnidPropietarioChanging(int value);
     partial void OnidPropietarioChanged();
-    partial void OnCedulaChanging(System.Data.Linq.Binary value);
+    partial void OnCedulaChanging(string value);
     partial void OnCedulaChanged();
     partial void OnNombreChanging(string value);
     partial void OnNombreChanged();
@@ -1047,8 +1047,8 @@ namespace CDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cedula", DbType="VarBinary(10) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary Cedula
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cedula", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Cedula
 		{
 			get
 			{
@@ -1485,104 +1485,6 @@ namespace CDatos
 		}
 	}
 	
-	public partial class CP_ListarVisitasResult
-	{
-		
-		private int _idVisitas;
-		
-		private System.DateTime _FechaV;
-		
-		private System.DateTime _HoraV;
-		
-		private int _idUsuario;
-		
-		private string _Comentario;
-		
-		public CP_ListarVisitasResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idVisitas", DbType="Int NOT NULL")]
-		public int idVisitas
-		{
-			get
-			{
-				return this._idVisitas;
-			}
-			set
-			{
-				if ((this._idVisitas != value))
-				{
-					this._idVisitas = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaV", DbType="Date NOT NULL")]
-		public System.DateTime FechaV
-		{
-			get
-			{
-				return this._FechaV;
-			}
-			set
-			{
-				if ((this._FechaV != value))
-				{
-					this._FechaV = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoraV", DbType="Date NOT NULL")]
-		public System.DateTime HoraV
-		{
-			get
-			{
-				return this._HoraV;
-			}
-			set
-			{
-				if ((this._HoraV != value))
-				{
-					this._HoraV = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", DbType="Int NOT NULL")]
-		public int idUsuario
-		{
-			get
-			{
-				return this._idUsuario;
-			}
-			set
-			{
-				if ((this._idUsuario != value))
-				{
-					this._idUsuario = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comentario", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Comentario
-		{
-			get
-			{
-				return this._Comentario;
-			}
-			set
-			{
-				if ((this._Comentario != value))
-				{
-					this._Comentario = value;
-				}
-			}
-		}
-	}
-	
 	public partial class CP_ListarInmobilariaResult
 	{
 		
@@ -1998,6 +1900,104 @@ namespace CDatos
 				if ((this._Ocupacion != value))
 				{
 					this._Ocupacion = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_ListarVisitasResult
+	{
+		
+		private int _idVisitas;
+		
+		private System.DateTime _FechaV;
+		
+		private System.TimeSpan _HoraV;
+		
+		private int _idUsuario;
+		
+		private string _Comentario;
+		
+		public CP_ListarVisitasResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idVisitas", DbType="Int NOT NULL")]
+		public int idVisitas
+		{
+			get
+			{
+				return this._idVisitas;
+			}
+			set
+			{
+				if ((this._idVisitas != value))
+				{
+					this._idVisitas = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaV", DbType="Date NOT NULL")]
+		public System.DateTime FechaV
+		{
+			get
+			{
+				return this._FechaV;
+			}
+			set
+			{
+				if ((this._FechaV != value))
+				{
+					this._FechaV = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoraV", DbType="Time NOT NULL")]
+		public System.TimeSpan HoraV
+		{
+			get
+			{
+				return this._HoraV;
+			}
+			set
+			{
+				if ((this._HoraV != value))
+				{
+					this._HoraV = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", DbType="Int NOT NULL")]
+		public int idUsuario
+		{
+			get
+			{
+				return this._idUsuario;
+			}
+			set
+			{
+				if ((this._idUsuario != value))
+				{
+					this._idUsuario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comentario", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Comentario
+		{
+			get
+			{
+				return this._Comentario;
+			}
+			set
+			{
+				if ((this._Comentario != value))
+				{
+					this._Comentario = value;
 				}
 			}
 		}

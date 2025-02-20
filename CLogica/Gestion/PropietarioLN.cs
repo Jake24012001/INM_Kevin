@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CLogica.Gestion
 {
-    class PropietarioLN
+    public class PropietarioLN
     {
     }
 }

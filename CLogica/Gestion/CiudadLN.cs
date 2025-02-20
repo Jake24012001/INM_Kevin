@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CLogica.Gestion
 {
-    class CiudadLN
+    public class CiudadLN
     {
     }
 }

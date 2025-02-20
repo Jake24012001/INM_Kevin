@@ -33,5 +33,16 @@ namespace CDatos.Properties {
                 return ((string)(this["AgenciaInmoviliariaConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-M2DUKGS;Initial Catalog=AgenciaInmoviliaria;Integrated Securi" +
+            "ty=True;Encrypt=True;TrustServerCertificate=True")]
+        public string AgenciaInmoviliariaConnectionString1 {
+            get {
+                return ((string)(this["AgenciaInmoviliariaConnectionString1"]));
+            }
+        }
     }
 }

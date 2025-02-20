@@ -49,6 +49,15 @@
     <Compile Include="Gestion\VisitasLN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CDatos\CDatos.csproj">
+      <Project>{c6b839fe-c672-4c1c-82e3-bf5014dd3940}</Project>
+      <Name>CDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CEntidades\CEntidades.csproj">
+      <Project>{439441db-cf5b-4cd2-bb76-0b0bae7b2f01}</Project>
+      <Name>CEntidades</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

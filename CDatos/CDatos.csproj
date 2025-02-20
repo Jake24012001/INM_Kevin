@@ -83,10 +83,6 @@
       <Project>{439441db-cf5b-4cd2-bb76-0b0bae7b2f01}</Project>
       <Name>CEntidades</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CLogica\CLogica.csproj">
-      <Project>{95541aa4-49e9-442e-a3ad-9e42006ec100}</Project>
-      <Name>CLogica</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
