@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.875" name="BDINM">
+  <DataContextMoniker Name="/BDINMDataContext" />
+  <nestedChildShapes>
+    <classShape Id="a7a1e299-6ae4-45fa-9fe2-1c23f556f380" absoluteBounds="3.5, 4.375, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/BDINMDataContext/Ciudad" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fa3c02bd-a03c-4a51-ab56-0b68f8801ea5" absoluteBounds="3.515, 4.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7e25bdcf-1f3f-4f75-b7c4-5f005788808e" absoluteBounds="3.5, 1.375, 2, 1.7708968098958329">
+      <DataClassMoniker Name="/BDINMDataContext/Visitas" />
+      <nestedChildShapes>
+        <elementListCompartment Id="beddfcde-c2f9-4867-a063-c845dd2a2e34" absoluteBounds="3.515, 1.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8cada575-b600-4f85-80a5-2e97e6a85666" absoluteBounds="6.25, 1, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/BDINMDataContext/Inmobilaria" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d0c07dc8-f825-40f9-8528-dab64b8efc71" absoluteBounds="6.265, 1.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="81805a22-e644-4c8f-9078-982fd8e4c6cd" absoluteBounds="3.5, 6.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/BDINMDataContext/Propietario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d0b9d0c2-dfa8-4294-904e-c3f3f69fe762" absoluteBounds="3.515, 6.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="62b8458c-04c1-43a8-9f63-c17b94101bdc" absoluteBounds="0.75, 1.25, 2, 1.9631982421875003">
+      <DataClassMoniker Name="/BDINMDataContext/Usuarios" />
+      <nestedChildShapes>
+        <elementListCompartment Id="33269969-56f2-4d67-b7ad-9dc6b40794cc" absoluteBounds="0.765, 1.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 5.06814697265625); (6.63541416666667 : 5.06814697265625 : JumpStart); (6.80208083333333 : 5.06814697265625 : JumpEnd); (7.25 : 5.06814697265625); (7.25 : 3.5401025390625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BDINMDataContext/Ciudad/Ciudad_Inmobilaria" />
+      <nodes>
+        <classShapeMoniker Id="a7a1e299-6ae4-45fa-9fe2-1c23f556f380" />
+        <classShapeMoniker Id="8cada575-b600-4f85-80a5-2e97e6a85666" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 2.26044840494792); (6.25 : 2.26044840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BDINMDataContext/Visitas/Visitas_Inmobilaria" />
+      <nodes>
+        <classShapeMoniker Id="7e25bdcf-1f3f-4f75-b7c4-5f005788808e" />
+        <classShapeMoniker Id="8cada575-b600-4f85-80a5-2e97e6a85666" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 7.57774983723958); (6.7187475 : 7.57774983723958); (6.7187475 : 3.5401025390625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BDINMDataContext/Propietario/Propietario_Inmobilaria" />
+      <nodes>
+        <classShapeMoniker Id="81805a22-e644-4c8f-9078-982fd8e4c6cd" />
+        <classShapeMoniker Id="8cada575-b600-4f85-80a5-2e97e6a85666" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 2.26044840494792); (3.5 : 2.26044840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BDINMDataContext/Usuarios/Usuarios_Visitas" />
+      <nodes>
+        <classShapeMoniker Id="62b8458c-04c1-43a8-9f63-c17b94101bdc" />
+        <classShapeMoniker Id="7e25bdcf-1f3f-4f75-b7c4-5f005788808e" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

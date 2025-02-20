@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="AgenciaInmoviliaria" Class="BDINMDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-M2DUKGS;Initial Catalog=AgenciaInmoviliaria;Integrated Security=True;Encrypt=False" SettingsObjectName="CDatos.Properties.Settings" SettingsPropertyName="AgenciaInmoviliariaConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Ciudad" Member="Ciudad">
+    <Type Name="Ciudad">
+      <Column Name="idCiudad" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Codigo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Ciudad_Inmobilaria" Member="Inmobilaria" ThisKey="idCiudad" OtherKey="idCiudad" Type="Inmobilaria" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Visitas" Member="Visitas">
+    <Type Name="Visitas">
+      <Column Name="idVisitas" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FechaV" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="HoraV" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Comentario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Visitas_Inmobilaria" Member="Inmobilaria" ThisKey="idVisitas" OtherKey="idVisitas" Type="Inmobilaria" />
+      <Association Name="Usuarios_Visitas" Member="Usuarios" ThisKey="idUsuario" OtherKey="idUsuario" Type="Usuarios" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Inmobilaria" Member="Inmobilaria">
+    <Type Name="Inmobilaria">
+      <Column Name="idInmobilaria" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NOficinas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NReferencia" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Tipo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="idCiudad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="idPropietario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idVisitas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Ciudad_Inmobilaria" Member="Ciudad" ThisKey="idCiudad" OtherKey="idCiudad" Type="Ciudad" IsForeignKey="true" />
+      <Association Name="Visitas_Inmobilaria" Member="Visitas" ThisKey="idVisitas" OtherKey="idVisitas" Type="Visitas" IsForeignKey="true" />
+      <Association Name="Propietario_Inmobilaria" Member="Propietario" ThisKey="idPropietario" OtherKey="idPropietario" Type="Propietario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Propietario" Member="Propietario">
+    <Type Name="Propietario">
+      <Column Name="idPropietario" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Cedula" Type="System.Data.Linq.Binary" DbType="VarBinary(10) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EstadoVivienda" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Propietario_Inmobilaria" Member="Inmobilaria" ThisKey="idPropietario" OtherKey="idPropietario" Type="Inmobilaria" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuarios" Member="Usuarios">
+    <Type Name="Usuarios">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Cedula" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaN" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Ocupacion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Usuarios_Visitas" Member="Visitas" ThisKey="idUsuario" OtherKey="idUsuario" Type="Visitas" />
+    </Type>
+  </Table>
+  <Function Name="dbo.CP_InsertarInmobilaria" Method="CP_InsertarInmobilaria">
+    <Parameter Name="idInmobilaria" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NOficinas" Parameter="nOficinas" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NReferencia" Parameter="nReferencia" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Tipo" Parameter="tipo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="idCiudad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Precio" Parameter="precio" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="idPropietario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idVisitas" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_InsertarUsuarios" Method="CP_InsertarUsuarios">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Apellido" Parameter="apellido" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="FechaN" Parameter="fechaN" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Ocupacion" Parameter="ocupacion" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_ModificarUsuarios" Method="CP_ModificarUsuarios">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Apellido" Parameter="apellido" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="FechaN" Parameter="fechaN" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Ocupacion" Parameter="ocupacion" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_ModificarInmobilaria" Method="CP_ModificarInmobilaria">
+    <Parameter Name="idInmobilaria" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NOficinas" Parameter="nOficinas" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NReferencia" Parameter="nReferencia" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Tipo" Parameter="tipo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="idCiudad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Precio" Parameter="precio" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="idPropietario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idVisitas" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_InsertarPropietario" Method="CP_InsertarPropietario">
+    <Parameter Name="idPropietario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Apellido" Parameter="apellido" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Telefono" Parameter="telefono" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="EstadoVivienda" Parameter="estadoVivienda" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_ModificarPropietario" Method="CP_ModificarPropietario">
+    <Parameter Name="idPropietario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Apellido" Parameter="apellido" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Telefono" Parameter="telefono" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="EstadoVivienda" Parameter="estadoVivienda" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_ListarCiudad" Method="CP_ListarCiudad">
+    <ElementType Name="CP_ListarCiudadResult">
+      <Column Name="idCiudad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Codigo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarVisitas" Method="CP_ListarVisitas">
+    <ElementType Name="CP_ListarVisitasResult">
+      <Column Name="idVisitas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FechaV" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="HoraV" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Comentario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarInmobilaria" Method="CP_ListarInmobilaria">
+    <ElementType Name="CP_ListarInmobilariaResult">
+      <Column Name="idInmobilaria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NOficinas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NReferencia" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Tipo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="idCiudad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="idPropietario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idVisitas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarPropietario" Method="CP_ListarPropietario">
+    <ElementType Name="CP_ListarPropietarioResult">
+      <Column Name="idPropietario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cedula" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EstadoVivienda" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarUsuarios" Method="CP_ListarUsuarios">
+    <ElementType Name="CP_ListarUsuariosResult">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cedula" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaN" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Ocupacion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminarInmobilaria" Method="CP_EliminarInmobilaria">
+    <Parameter Name="idInmobilaria" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_EliminarVisitas" Method="CP_EliminarVisitas">
+    <Parameter Name="idVisitas" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_EliminarPropietario" Method="CP_EliminarPropietario">
+    <Parameter Name="idPropietario" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_EliminarUsuarios" Method="CP_EliminarUsuarios">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_InsertarVisitas" Method="CP_InsertarVisitas">
+    <Parameter Name="idVisitas" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FechaV" Parameter="fechaV" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="HoraV" Parameter="horaV" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Comentario" Parameter="comentario" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_ModificarVisitas" Method="CP_ModificarVisitas">
+    <Parameter Name="idVisitas" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FechaV" Parameter="fechaV" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="HoraV" Parameter="horaV" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Comentario" Parameter="comentario" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
